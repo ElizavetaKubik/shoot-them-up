@@ -1,0 +1,2 @@
+D:\Work\Learning\ue4_shoot_them_up\ShootThemUp\Intermediate\Build\Win64\UE4Editor\Development\ShootThemUp\Definitions.ShootThemUp.h
+D:\Work\Learning\ue4_shoot_them_up\ShootThemUp\Source\ShootThemUp\ShootThemUp.h
