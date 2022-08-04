@@ -76,3 +76,6 @@ DerivedDataCache/*
 #My custom
 
 __Sources
+Binaries/
+Intermediate/
+Saved/

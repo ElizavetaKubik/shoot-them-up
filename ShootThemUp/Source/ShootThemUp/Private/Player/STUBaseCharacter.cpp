@@ -35,3 +35,11 @@ void ASTUBaseCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 
 }
 
+void ASTUBaseCharacter::MoveForward(float Amount)
+{
+}
+
+void ASTUBaseCharacter::MoveRight(float Amount)
+{
+}
+
