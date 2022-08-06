@@ -7,6 +7,6 @@
 
 ASTUGameModeBase::ASTUGameModeBase()
 {
-	DefaultPawnClass=ASTUBaseCharacter::StaticClass();
-	PlayerControllerClass=ASTUPlayerController::StaticClass();
+	DefaultPawnClass = ASTUBaseCharacter::StaticClass();
+	PlayerControllerClass = ASTUPlayerController::StaticClass();
 }
