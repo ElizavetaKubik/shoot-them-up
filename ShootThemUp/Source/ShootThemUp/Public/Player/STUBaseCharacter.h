@@ -52,6 +52,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category="Movement")
 	float GetMovementDirection() const;
+
+	UPROPERTY(EditDefaultsOnly, Category="Animation")
+	UAnimMontage* DeathAnimMontage;
 	
 private:
 
@@ -63,4 +66,7 @@ private:
 
 	void OnStartRunning();
 	void OnStopRunning();
+
+	void OnDeath();
+	void OnHealthChanged(float Health);
 };
