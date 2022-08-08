@@ -4,8 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+
 #include "STUWeaponComponent.generated.h"
 
+class ASTUBaseWeapon;
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class SHOOTTHEMUP_API USTUWeaponComponent : public UActorComponent
@@ -13,13 +15,25 @@ class SHOOTTHEMUP_API USTUWeaponComponent : public UActorComponent
 	GENERATED_BODY()
 
 public:	
-	// Sets default values for this component's properties
+
 	USTUWeaponComponent();
 
+	void Fire();
+
 protected:
-	// Called when the game starts
+	
+	UPROPERTY(EditDefaultsOnly, Category="Weapon")
+	TSubclassOf<ASTUBaseWeapon> WeaponClass;
+
+	UPROPERTY(EditDefaultsOnly, Category="Weapon")
+	FName FAttachPointName = "WeaponSocket";
+	
 	virtual void BeginPlay() override;
 
-public:	
+private:	
 
+	UPROPERTY()
+	ASTUBaseWeapon* CurrentWeapon = nullptr;
+	
+	void SpawnWeapon();
 };
