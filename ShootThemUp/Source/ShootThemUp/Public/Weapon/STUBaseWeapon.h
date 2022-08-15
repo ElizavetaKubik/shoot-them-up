@@ -4,26 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "STUCoreTypes.h"
 #include "STUBaseWeapon.generated.h"
 
-DECLARE_MULTICAST_DELEGATE(FOnClipEmptySignature);
-
 class USkeletalMeshComponent;
-
-USTRUCT(BlueprintType)
-struct FAmmoData
-{
-	GENERATED_USTRUCT_BODY()
-
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Weapon")
-	int32 Bullets;
-
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Weapon", meta = (EditCondition = "!Infinity"))
-	int32 Clips;
-
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Weapon")
-	bool Infinity;
-};
 
 UCLASS()
 class SHOOTTHEMUP_API ASTUBaseWeapon : public AActor
@@ -42,6 +26,9 @@ public:
 	void ChangeClip();
 	bool CanReload() const;
 
+	FWeaponUIData GetUIData() const { return UIData; }
+	FAmmoData GetAmmoData() const { return CurrentAmmo; }
+
 protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Component")
@@ -55,6 +42,9 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Weapon")
 	FAmmoData DefaultAmmo{15, 10, false};
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Weapon")
+	FWeaponUIData UIData;
 	
 	virtual void BeginPlay() override;
 
@@ -69,7 +59,6 @@ protected:
 	void DecreaseAmmo();
 	bool IsAmmoEmpty() const;
 	bool IsClipEmpty() const;
-	void LogAmmo();
 
 private:
 	FAmmoData CurrentAmmo;

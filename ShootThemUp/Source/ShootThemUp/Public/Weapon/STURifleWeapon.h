@@ -25,7 +25,7 @@ protected:
 	float TimeBetweenShots = 0.1f;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
-	float BulletSpread = 1.5f;
+	float BulletSpread = 1.0f;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	float DamageAmount = 10.0f;
