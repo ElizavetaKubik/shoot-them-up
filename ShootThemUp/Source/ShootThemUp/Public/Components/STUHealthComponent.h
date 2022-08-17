@@ -25,6 +25,9 @@ public:
 	
 	UFUNCTION(BlueprintCallable, Category="Health")
 	float GetHealthPercent() const { return Health / MaxHealth; };
+
+	bool TryToAddHealth(float HealthAmount);
+	bool IsHealthFull() const;
 	
 protected:
 
@@ -35,13 +38,13 @@ protected:
 	bool AutoHeal = true;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Heal", meta = ( EditCondition = "AutoHeal"))
-	float HealUpdateTime = 0.3f;
+	float HealUpdateTime = 1.0f;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Heal", meta = (EditCondition = "AutoHeal"))
 	float HealDelay = 3.0f;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category="Heal", meta = (EditCondition = "AutoHeal"))
-	float HealModifier = 5.0f;
+	float HealModifier = 1.0f;
 	
 	virtual void BeginPlay() override;
 
