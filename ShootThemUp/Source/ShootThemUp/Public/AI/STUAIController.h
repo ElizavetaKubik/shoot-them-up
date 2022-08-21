@@ -14,4 +14,18 @@ class SHOOTTHEMUP_API ASTUAIController : public AAIController
 {
 	GENERATED_BODY()
 	
+<<<<<<< Updated upstream
+=======
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="AI")
+	USTUAIPerceptionComponent* STUPerceptionComponent;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="AI")
+	FName FocusOnKeyActor = "EnemyActor";
+
+	virtual void OnPossess(APawn* InPawn) override;
+	virtual void Tick(float DeltaSeconds) override;
+
+private:
+	AActor* GetFocusOnActor() const;
+>>>>>>> Stashed changes
 };
