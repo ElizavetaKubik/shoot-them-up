@@ -5,6 +5,7 @@
 #include "BehaviorTree/BlackboardComponent.h"
 #include "AIController.h"
 #include "STUUtils.h"
+#include "Components/STUAIPerceptionComponent.h"
 #include "Components/STUWeaponComponent.h"
 
 USTUFireService::USTUFireService()
@@ -14,8 +15,8 @@ USTUFireService::USTUFireService()
 
 void USTUFireService::TickNode(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory, float DeltaSeconds)
 {
-	const auto Controller = OwnerComp.GetAIOwner();
 	const auto Blackboard = OwnerComp.GetBlackboardComponent();
+	const auto Controller = OwnerComp.GetAIOwner();
 
 	const auto HasAim = Blackboard && Blackboard->GetValueAsObject(EnemyActorKey.SelectedKeyName);
 

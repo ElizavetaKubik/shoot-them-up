@@ -2,17 +2,14 @@
 
 
 #include "AI/STUAIController.h"
-<<<<<<< Updated upstream
-
-=======
 #include "AI/STUAICharacter.h"
-#include "BehaviorTree/BlackboardComponent.h"
 #include "Components/STUAIPerceptionComponent.h"
+#include "BehaviorTree/BlackboardComponent.h"
 
 ASTUAIController::ASTUAIController()
 {
-	STUPerceptionComponent = CreateDefaultSubobject<USTUAIPerceptionComponent>("STUPerceptionComponent");
-	SetPerceptionComponent(*STUPerceptionComponent);
+	STUAIPerceptionComponent = CreateDefaultSubobject<USTUAIPerceptionComponent>("PerceptionComponent");
+	SetPerceptionComponent(*STUAIPerceptionComponent);
 }
 
 void ASTUAIController::OnPossess(APawn* InPawn)
@@ -30,7 +27,7 @@ void ASTUAIController::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
 
-	const auto AimActor = GetFocusOnActor();
+ 	const auto AimActor = GetFocusOnActor();
 	SetFocus(AimActor);
 }
 
@@ -38,6 +35,5 @@ AActor* ASTUAIController::GetFocusOnActor() const
 {
 	if(!GetBlackboardComponent()) return nullptr;
 
-	return Cast<AActor>(GetBlackboardComponent()->GetValueAsObject(FocusOnKeyActor));
+	return Cast<AActor>(GetBlackboardComponent()->GetValueAsObject(FocusOnKeyName));
 }
->>>>>>> Stashed changes

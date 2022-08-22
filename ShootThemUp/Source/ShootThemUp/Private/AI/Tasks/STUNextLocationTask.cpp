@@ -1,7 +1,7 @@
 // Shoot Them Up Game. All Rights Reserved.
 
 
-#include "AI/Task/STUNextLocationTask.h"
+#include "AI/Tasks/STUNextLocationTask.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "AIController.h"
 #include "NavigationSystem.h"
@@ -15,7 +15,8 @@ EBTNodeResult::Type USTUNextLocationTask::ExecuteTask(UBehaviorTreeComponent& Ow
 {
 	const auto Controller = OwnerComp.GetAIOwner();
 	const auto Blackboard = OwnerComp.GetBlackboardComponent();
-	if(!Controller || !Blackboard) return EBTNodeResult::Failed;  
+
+	if(!Controller || !Blackboard) return EBTNodeResult::Failed;
 
 	const auto Pawn = Controller->GetPawn();
 	if(!Pawn) return EBTNodeResult::Failed;
@@ -24,8 +25,8 @@ EBTNodeResult::Type USTUNextLocationTask::ExecuteTask(UBehaviorTreeComponent& Ow
 	if(!NavSys) return EBTNodeResult::Failed;
 
 	FNavLocation NavLocation;
-	auto Location = Pawn->GetActorLocation();
 
+	auto Location = Pawn->GetActorLocation();
 	if(!SelfCenter)
 	{
 		auto CenterActor = Cast<AActor>(Blackboard->GetValueAsObject(CenterActorKey.SelectedKeyName));
@@ -33,10 +34,10 @@ EBTNodeResult::Type USTUNextLocationTask::ExecuteTask(UBehaviorTreeComponent& Ow
 		Location = CenterActor->GetActorLocation();
 	}
 	
-	const auto Found = NavSys->GetRandomReachablePointInRadius(Location,
-		Radius, NavLocation);
+	const auto Found = NavSys->GetRandomReachablePointInRadius(Location, Radius, NavLocation);
 	if(!Found) return EBTNodeResult::Failed;
 
 	Blackboard->SetValueAsVector(AimLocationKey.SelectedKeyName, NavLocation.Location);
+	
 	return EBTNodeResult::Succeeded;
 }

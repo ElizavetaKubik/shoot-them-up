@@ -12,9 +12,11 @@ class SHOOTTHEMUP_API USTUFindEnemyService : public UBTService
 	GENERATED_BODY()
 
 public:
+
 	USTUFindEnemyService();
 
 protected:
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="AI")
 	FBlackboardKeySelector EnemyActorKey;
 
