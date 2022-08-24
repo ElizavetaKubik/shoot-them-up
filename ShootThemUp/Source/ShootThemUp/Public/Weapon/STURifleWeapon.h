@@ -8,7 +8,7 @@
 
 class USTUWeaponFXComponent;
 
-UCLASS()
+UCLASS(Abstract)
 class SHOOTTHEMUP_API ASTURifleWeapon : public ASTUBaseWeapon
 {
 	GENERATED_BODY()

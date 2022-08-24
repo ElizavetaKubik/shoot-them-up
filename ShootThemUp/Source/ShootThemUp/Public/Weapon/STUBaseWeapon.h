@@ -9,7 +9,7 @@
 
 class USkeletalMeshComponent;
 
-UCLASS()
+UCLASS(Abstract)
 class SHOOTTHEMUP_API ASTUBaseWeapon : public AActor
 {
 	GENERATED_BODY()
@@ -25,6 +25,7 @@ public:
 	
 	void ChangeClip();
 	bool IsAmmoEmpty() const;
+	bool IsAmmoFull() const;
 	bool CanReload() const;
 
 	FWeaponUIData GetUIData() const { return UIData; }
@@ -61,7 +62,6 @@ protected:
 
 	void DecreaseAmmo();
 	bool IsClipEmpty() const;
-	bool IsAmmoFull() const;
 
 private:
 	FAmmoData CurrentAmmo;

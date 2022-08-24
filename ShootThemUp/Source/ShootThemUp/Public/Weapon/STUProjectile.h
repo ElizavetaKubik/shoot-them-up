@@ -10,7 +10,7 @@
 class USphereComponent;
 class USTUWeaponFXComponent;
 
-UCLASS()
+UCLASS(Abstract)
 class SHOOTTHEMUP_API ASTUProjectile : public AActor
 {
 	GENERATED_BODY()
